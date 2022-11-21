@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { SiTwitter, SiLinkedin } from "react-icons/si";
 
 const Footer = () => {
   return (
@@ -12,7 +12,7 @@ const Footer = () => {
               href="https://twitter.com/aryanraj_60"
               src="../../assests/twitter.png"
             >
-              <FaTwitter />
+              <SiTwitter />
             </a>
 
             <a
@@ -20,7 +20,7 @@ const Footer = () => {
               src="../../assests/linkedin.png"
               href="https://www.linkedin.com/in/aryan-rajput-3a0760204/"
             >
-              <FaLinkedinIn />
+              <SiLinkedin />
             </a>
 
             <a
