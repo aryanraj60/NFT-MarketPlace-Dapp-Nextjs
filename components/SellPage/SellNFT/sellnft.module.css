@@ -1,0 +1,12 @@
+.form label {
+  background-color: black;
+  color: white !important;
+}
+
+.form h3 {
+  color: white;
+}
+
+.form button {
+  font-size: 18px;
+}
