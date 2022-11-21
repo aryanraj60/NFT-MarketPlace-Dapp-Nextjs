@@ -1,4 +1,5 @@
 import React from "react";
+import { FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -9,17 +10,17 @@ const Footer = () => {
             <a
               class="btn btn-outline-light btn-floating m-1"
               href="https://twitter.com/aryanraj_60"
-              role="button"
+              src="../../assests/twitter.png"
             >
-              <i class="fa-brands fa-twitter"></i>
+              <FaTwitter />
             </a>
 
             <a
               class="btn btn-outline-light btn-floating m-1"
+              src="../../assests/linkedin.png"
               href="https://www.linkedin.com/in/aryan-rajput-3a0760204/"
-              role="button"
             >
-              <i class="fa-brands fa-linkedin"></i>
+              <FaLinkedinIn />
             </a>
 
             <a
