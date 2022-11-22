@@ -6,20 +6,29 @@ import { useMoralis } from "react-moralis";
 
 const sellnft = () => {
   const { chainId: chainIdHex, isWeb3Enabled } = useMoralis();
-  const chainID = chainIdHex ? parseInt(chainIdHex).toString() : "31337";
-  const NftMarketPlaceAddress = networkMapping[chainID]["NftMarketPlace"][0];
+  const chainIdString = chainIdHex ? parseInt(chainIdHex).toString() : null;
+  const NftMarketPlaceAddress =
+    chainIdString in networkMapping
+      ? networkMapping[chainIdString].NftMarketPlace[0]
+      : null;
 
   console.log("Sell PAGE Rendered");
   return (
     <div className="Page-Home">
       {isWeb3Enabled ? (
-        <>
-          <SellNFT
-            nftAbi={nftAbi}
-            nftMarketPlaceAbi={nftMarketPlaceAbi}
-            NftMarketPlaceAddress={NftMarketPlaceAddress}
-          />
-        </>
+        NftMarketPlaceAddress ? (
+          <>
+            <SellNFT
+              nftAbi={nftAbi}
+              nftMarketPlaceAbi={nftMarketPlaceAbi}
+              NftMarketPlaceAddress={NftMarketPlaceAddress}
+            />
+          </>
+        ) : (
+          <div className="display-6 text-light text-center">
+            Switch To Goerli Network
+          </div>
+        )
       ) : (
         <div className="display-6 text-light text-center">
           Connect To Your Wallet

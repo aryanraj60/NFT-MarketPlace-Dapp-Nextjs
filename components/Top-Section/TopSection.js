@@ -1,7 +1,7 @@
 import React from "react";
 import NFTBox from "./NFTBox/NFTBox";
 
-const TopSection = ({ listedNfts }) => {
+const TopSection = ({ listedNfts, nftMarketPlaceAddress }) => {
   console.log("Top section rendered!");
   return (
     <div className="TopSection">
@@ -25,6 +25,7 @@ const TopSection = ({ listedNfts }) => {
               price={price}
               seller={seller}
               id={id}
+              nftMarketPlaceAddress={nftMarketPlaceAddress}
             />
           );
         })}

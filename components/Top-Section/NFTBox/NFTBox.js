@@ -6,8 +6,6 @@ import { nftAbi, nftMarketPlaceAbi } from "../../../constants/index";
 import NFTModal from "./NFT-Modal/NFTModal";
 import BuyModal from "./Buy-Modal/BuyModal";
 
-import networkMapping from "../../../constants/networkMapping.json";
-
 const truncateStr = (fullStr, strLen) => {
   if (fullStr.length <= strLen) return fullStr;
 
@@ -23,17 +21,19 @@ const truncateStr = (fullStr, strLen) => {
   );
 };
 
-const NFTBox = ({ tokenId, seller, price, nftAddress }) => {
+const NFTBox = ({
+  tokenId,
+  seller,
+  price,
+  nftAddress,
+  nftMarketPlaceAddress,
+}) => {
   const { account, chainId: chainIdHex } = useMoralis();
   const [imageURI, setImageURI] = useState("");
   const [tokenName, setTokenName] = useState("");
   const [tokenDescription, setTokenDescription] = useState("");
   const [updateShowModal, setUpdateShowModal] = useState(false);
   const [buyShowModal, setBuyShowModal] = useState(false);
-
-  const chainID = parseInt(chainIdHex).toString();
-
-  const nftMarketPlaceAddress = networkMapping[chainID]["NftMarketPlace"][0];
 
   const { runContractFunction: getTokenURI } = useWeb3Contract({
     abi: nftAbi,

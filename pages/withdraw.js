@@ -6,16 +6,25 @@ import { useMoralis } from "react-moralis";
 
 const withdraw = () => {
   const { chainId: chainIdHex, isWeb3Enabled } = useMoralis();
-  const chainID = chainIdHex ? parseInt(chainIdHex).toString() : "31337";
-  const NftMarketPlaceAddress = networkMapping[chainID]["NftMarketPlace"][0];
+  const chainIdString = chainIdHex ? parseInt(chainIdHex).toString() : null;
+  const NftMarketPlaceAddress =
+    chainIdString in networkMapping
+      ? networkMapping[chainIdString].NftMarketPlace[0]
+      : null;
 
   return (
     <div>
       {isWeb3Enabled ? (
-        <Withdraw
-          nftMarketPlaceAbi={nftMarketPlaceAbi}
-          NftMarketPlaceAddress={NftMarketPlaceAddress}
-        />
+        NftMarketPlaceAddress ? (
+          <Withdraw
+            nftMarketPlaceAbi={nftMarketPlaceAbi}
+            NftMarketPlaceAddress={NftMarketPlaceAddress}
+          />
+        ) : (
+          <div className="display-6 text-light text-center">
+            Switch To Goerli Network
+          </div>
+        )
       ) : (
         <div className="display-6 text-light text-center">
           Connect To Your Wallet
